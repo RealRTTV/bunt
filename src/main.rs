@@ -8,7 +8,7 @@ use anyhow::{Context as AnyhowContext, Result};
 use chrono::{Datelike, Local};
 use parking_lot::RwLock;
 use serde_json::Value;
-use serenity::all::{ChannelId, CreateEmbed, CreateMessage, Message};
+use serenity::all::{CreateEmbed, CreateMessage, Message};
 use serenity::async_trait;
 use serenity::prelude::*;
 
