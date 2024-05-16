@@ -13,7 +13,6 @@ use serenity::async_trait;
 use serenity::prelude::*;
 
 pub const ATLANTA_BRAVES_TEAM_ID: i64 = 144;
-pub const CHANNEL_ID: u64 = 1240483397541953637;
 
 pub fn get_with_sleep(url: &str) -> Result<Value> {
     loop {
@@ -29,10 +28,6 @@ struct Handler {
 }
 
 impl Handler {
-    fn is_valid_channel(&self, channel_id: ChannelId) -> bool {
-        channel_id == CHANNEL_ID
-    }
-
     fn get_today_game(&self) -> Option<Value> {
         let mut current_game_id = self.current_game_id.write();
 
@@ -62,12 +57,6 @@ impl Handler {
     }
 
     async fn on_message(&self, ctx: Context, msg: Message) -> Result<()> {
-        use std::fmt::Write;
-
-        if !self.is_valid_channel(msg.channel_id) {
-            return Ok(())
-        }
-
         if msg.content == "~ev" {
             let typing_trigger = msg.channel_id.start_typing(&ctx.http);
             let current_braves_game = self.get_today_game().context("Could not get today's game")?;
