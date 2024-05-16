@@ -5,7 +5,7 @@ use std::ops::Deref;
 use std::time::Duration;
 
 use anyhow::{Context as AnyhowContext, Result};
-use chrono::Local;
+use chrono::{Datelike, Local};
 use parking_lot::RwLock;
 use serde_json::Value;
 use serenity::all::{ChannelId, CreateEmbed, CreateMessage, Message};
