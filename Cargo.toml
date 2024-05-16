@@ -1,0 +1,13 @@
+[package]
+name = "bunt"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+chrono = "0.4.38"
+serenity = { version = "0.12.1", features = ["cache", "simd_json", "temp_cache", "chrono"] }
+tokio = { version = "1.37.0", features = ["rt-multi-thread"] }
+ureq = { version = "2.9.7", features = ["json"] }
+parking_lot = "0.12.2"
+anyhow = "1.0.83"
+serde_json = "1.0.117"
