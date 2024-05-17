@@ -3,6 +3,21 @@ name = "bunt"
 version = "0.1.0"
 edition = "2021"
 
+[profile.release]
+opt-level = 3
+codegen-units = 1
+strip = true
+lto = true
+
+[profile.release.build-override]
+opt-level = 3
+strip = true
+debug = false
+debug-assertions = false
+overflow-checks = false
+incremental = true
+codegen-units = 1
+
 [dependencies]
 chrono = "0.4.38"
 serenity = { version = "0.12.1", features = ["cache", "simd_json", "temp_cache", "chrono"] }
@@ -11,3 +26,4 @@ ureq = { version = "2.9.7", features = ["json"] }
 parking_lot = "0.12.2"
 anyhow = "1.0.83"
 serde_json = "1.0.117"
+scraper = "0.19.0"
